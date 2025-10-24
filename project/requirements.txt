@@ -1,0 +1,10 @@
+Flask==2.3.3
+Werkzeug==2.3.7
+mysql-connector-python==8.1.0
+opencv-python==4.8.1.78
+numpy>=1.26.0
+scikit-learn
+Pillow>=10.2.0
+google-generativeai==0.3.2
+
+

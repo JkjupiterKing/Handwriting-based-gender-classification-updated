@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "D:\\ML Projects\\Handwriting-based-gender-classification\\.venv-1\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "D:\\ML Projects\\Handwriting-based-gender-classification\\.venv-1\\Lib\\site-packages"
+    ]
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HandwriteAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .contact-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg3.jpg') no-repeat center center/cover);
+            padding: 80px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-pen-fancy"></i>
+                <span>HandwriteAI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/features" class="nav-link">Features</a>
+                <a href="/webcam" class="nav-link">Webcam Demo</a>
+                <a href="/upload" class="nav-link">Upload Demo</a>
+                <a href="/cnn-demo" class="nav-link active">CNN Demo</a>
+                <a href="/contact" class="nav-link active">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Header -->
+    <section class="demo-header">
+        <div class="container">
+            <h1>Contact Afnan Khan</h1>
+            <p>Get in touch with the developer of HandwriteAI</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>I'm here to answer your questions about HandwriteAI and discuss potential collaborations or opportunities.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email Me</h3>
+                                <p><a href="mailto:afnankhan1663@gmail.com">afnankhan1663@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Call Me</h3>
+                                <p><a href="tel:+919148168146">+91 9148168146</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h3>Connect on LinkedIn</h3>
+                                <p><a href="https://www.linkedin.com/in/afnan-khan22" target="_blank">LinkedIn Profile</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h3>View My Projects</h3>
+                                <p><a href="https://github.com/Afnankhan8/" target="_blank">GitHub Profile</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/afnan-khan22" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Afnankhan8/" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:afnankhan1663@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+919148168146"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h2>Send Me a Message</h2>
+                    <form id="contactForm" class="contact-form" action="/send-message" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message (project details, collaboration ideas, questions, etc.)" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="responseMessage" style="display: none; margin-top: 10px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>HandwriteAI</span>
+                    </div>
+                    <p>Advanced handwriting analysis using cutting-edge AI</p>
+                    <p>Developed by Afnan Khan</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="/webcam">Webcam Demo</a></li>
+                        <li><a href="/upload">Upload Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:afnankhan1663@gmail.com">afnankhan1663@gmail.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+919148168146">+91 9148168146</a></li>
+                        <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/afnan-khan22" target="_blank">LinkedIn</a></li>
+                        <li><i class="fab fa-github"></i> <a href="https://github.com/Afnankhan8/" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HandwriteAI. All rights reserved. | Created by Afnan Khan</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const responseMessage = document.getElementById('responseMessage');
+
+            try {
+                const response = await fetch('/send-message', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    responseMessage.style.display = 'block';
+                    responseMessage.style.color = 'green';
+                    responseMessage.textContent = data.message;
+                } else {
+                    responseMessage.style.display = 'block';
+                    responseMessage.style.color = 'red';
+                    responseMessage.textContent = 'Failed to send the message. Please try again.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                responseMessage.style.display = 'block';
+                responseMessage.style.color = 'red';
+                responseMessage.textContent = 'An error occurred. Please try again later.';
+            }
+        });
+    </script>
+</body>
+</html>

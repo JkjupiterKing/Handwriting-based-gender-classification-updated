@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandwriteAI - Handwriting Analysis</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), url('/static/images/bg1.jpg') no-repeat center center/cover);
+            color: white;
+        }
+
+        .features-preview {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg2.jpg') no-repeat center center/cover);
+        }
+
+        .how-it-works {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg3.jpg') no-repeat center center/cover);
+        }
+
+        .demo-callout {
+            background: linear-gradient(rgba(79, 70, 229, 0.85), url('/static/images/bg4.jpg') no-repeat center center/cover);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-pen-fancy"></i>
+                <span>HandwriteAI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/features" class="nav-link">Features</a>
+                <a href="/webcam" class="nav-link">Webcam Demo</a>
+                <a href="/upload" class="nav-link">Upload Demo</a>
+                <a href="/cnn-demo" class="nav-link active">CNN Demo</a> <!-- Add this line -->
+                <a href="/contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Unlock the Secrets of
+                    <span class="gradient-text">Handwriting</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Advanced AI-powered handwriting analysis with 94.6% accuracy
+                </p>
+                <div class="hero-buttons">
+                    <a href="/features" class="btn btn-primary">
+                        <i class="fas fa-star"></i>
+                        Explore Features
+                    </a>
+                    <a href="/webcam" class="btn btn-secondary">
+                        <i class="fas fa-camera"></i>
+                        Try Webcam Demo
+                    </a>
+                </div>
+                <a href="/cnn-demo" class="btn btn-tertiary">
+                    <i class="fas fa-brain"></i>
+                    CNN Model Demo
+                </a>
+            </div>
+            <!-- <div class="hero-image">
+                <img src="https://images.stockcake.com/public/c/6/1/c61942d7-9bc6-48a9-9683-5f5a71e87201_large/futuristic-ai-portrait-stockcake.jpg"
+                    alt="Handwriting Analysis">
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Features Preview -->
+    <section class="features-preview">
+        <div class="container">
+            <h2>Key Capabilities</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-venus-mars"></i>
+                    <h3>Gender Detection</h3>
+                    <p>Identify writer's gender from handwriting with 94.6% accuracy</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hand-paper"></i>
+                    <h3>Handedness Analysis</h3>
+                    <p>Determine if writer is left or right-handed</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-clock"></i>
+                    <h3>Age Estimation</h3>
+                    <p>Predict approximate age group of writer</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-feather"></i>
+                    <h3>Style Analysis</h3>
+                    <p>Identify unique handwriting characteristics and traits</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Capture</h3>
+                    <p>Upload an image or use your webcam to capture handwriting</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Analyze</h3>
+                    <p>Our AI processes handwriting using Gemini technology</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Discover</h3>
+                    <p>Receive detailed analysis of handwriting characteristics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Callout -->
+    <section class="demo-callout">
+        <div class="container">
+            <div class="callout-content">
+                <h2>Ready to Analyze Your Handwriting?</h2>
+                <p>Try our real-time webcam analysis or upload a sample</p>
+                <a href="/webcam" class="btn btn-large">
+                    <i class="fas fa-camera"></i>
+                    Start Webcam Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>HandwriteAI</span>
+                    </div>
+                    <p>Advanced handwriting analysis using cutting-edge AI</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="/webcam">Webcam Demo</a></li>
+                        <li><a href="/upload">Upload Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/afnan-khan22"
+                                target="_blank">https://www.linkedin.com/in/afnan-khan22</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/Afnankhan8/"
+                                target="_blank">https://github.com/Afnankhan8/</a></li>
+                        <li><strong>Email:</strong> <a href="mailto:afnankhan1663@gmail.com">afnankhan1663@gmail.com</a>
+                        </li>
+                        <li><strong>Phone:</strong> <a href="tel:+919148168146">+91 9148168146</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HandwriteAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

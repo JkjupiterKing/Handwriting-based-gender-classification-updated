@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Demo - HandwriteAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .demo-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), url('/static/images/bg1.jpg') no-repeat center center/cover);
+            color: white;
+        }
+        
+        .upload-demo {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg2.jpg') no-repeat center center/cover);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-pen-fancy"></i>
+                <span>HandwriteAI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/features" class="nav-link">Features</a>
+                <a href="/webcam" class="nav-link">Webcam Demo</a>
+                <a href="/upload" class="nav-link active">Upload Demo</a>
+                <a href="/cnn-demo" class="nav-link active">CNN Demo</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Upload Demo Header -->
+    <section class="demo-header">
+        <div class="container">
+            <h1>Upload Handwriting Sample</h1>
+            <p>Upload an image of handwriting for analysis</p>
+        </div>
+    </section>
+
+    <!-- Upload Demo -->
+    <section class="upload-demo">
+        <div class="container">
+            <div class="demo-container">
+                <div class="upload-section">
+                    <h2>Upload Image</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop your handwriting image here</p>
+                        <p>or</p>
+                        <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-preview" id="imagePreview" style="display: none;">
+                        <img id="previewImage" src="" alt="Preview">
+                    </div>
+                    <div class="upload-controls">
+                        <button id="analyzeBtn" class="btn btn-primary" style="display: none;">
+                            <i class="fas fa-analytics"></i>
+                            Analyze Handwriting
+                        </button>
+                        <button id="resetBtn" class="btn btn-secondary" style="display: none;">
+                            <i class="fas fa-redo"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="results-section">
+                    <h2>Analysis Results</h2>
+                    <div id="loading" class="loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyzing handwriting...</p>
+                    </div>
+                    <div id="results" class="results-card">
+                        <div class="result-item">
+                            <h3>Gender</h3>
+                            <p id="genderResult">-</p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Handedness</h3>
+                            <p id="handednessResult">-</p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Age Group</h3>
+                            <p id="ageGroupResult">-</p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Writing Style</h3>
+                            <p id="styleTraits">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>HandwriteAI</span>
+                    </div>
+                    <p>Advanced handwriting analysis using cutting-edge AI</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="/webcam">Webcam Demo</a></li>
+                        <li><a href="/upload">Upload Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@handwriteai.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HandwriteAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        // Upload functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const browseBtn = document.getElementById('browseBtn');
+        const fileInput = document.getElementById('fileInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImage = document.getElementById('previewImage');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const loading = document.getElementById('loading');
+        const results = document.getElementById('results');
+        
+        // Open file browser
+        browseBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        // File input change
+        fileInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        uploadArea.style.display = 'none';
+                        imagePreview.style.display = 'block';
+                        analyzeBtn.style.display = 'inline-block';
+                        resetBtn.style.display = 'inline-block';
+                    }
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Please select an image file.');
+                }
+            }
+        });
+        
+        // Drag and drop
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#6366f1';
+            this.style.backgroundColor = '#f8fafc';
+        });
+        
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#e5e7eb';
+            this.style.backgroundColor = 'transparent';
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#e5e7eb';
+            this.style.backgroundColor = 'transparent';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                fileInput.files = e.dataTransfer.files;
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    uploadArea.style.display = 'none';
+                    imagePreview.style.display = 'block';
+                    analyzeBtn.style.display = 'inline-block';
+                    resetBtn.style.display = 'inline-block';
+                }
+                
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please drop an image file.');
+            }
+        });
+        
+        // Reset button
+        resetBtn.addEventListener('click', function() {
+            fileInput.value = '';
+            uploadArea.style.display = 'flex';
+            imagePreview.style.display = 'none';
+            analyzeBtn.style.display = 'none';
+            resetBtn.style.display = 'none';
+            results.style.display = 'block';
+            
+            // Reset results
+            document.getElementById('genderResult').textContent = '-';
+            document.getElementById('handednessResult').textContent = '-';
+            document.getElementById('ageGroupResult').textContent = '-';
+            document.getElementById('styleTraits').textContent = '-';
+        });
+        
+        // Analyze button
+        analyzeBtn.addEventListener('click', async function () {
+            if (!fileInput.files.length) return;
+
+            loading.style.display = 'block';
+            results.style.display = 'none';
+
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('genderResult').textContent = data.gender || "Unknown";
+                    document.getElementById('handednessResult').textContent = data.handedness || "Unknown";
+                    document.getElementById('ageGroupResult').textContent = data.age_group || "Unknown";
+
+                    // Display formatted style traits
+                    document.getElementById('styleTraits').textContent = data.style_traits || "Unknown";
+                } else {
+                    alert('Error: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to analyze handwriting. Please try again.');
+            } finally {
+                loading.style.display = 'none';
+                results.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

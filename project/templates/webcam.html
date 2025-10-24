@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Demo - HandwriteAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .demo-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), url('/static/images/bg1.jpg') no-repeat center center/cover);
+            color: white;
+        }
+        
+        .webcam-demo {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg2.jpg') no-repeat center center/cover);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-pen-fancy"></i>
+                <span>HandwriteAI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/features" class="nav-link">Features</a>
+                <a href="/webcam" class="nav-link active">Webcam Demo</a>
+                <a href="/upload" class="nav-link">Upload Demo</a>
+                <a href="/cnn-demo" class="nav-link active">CNN Demo</a> <!-- Add this line -->
+                <a href="/contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Webcam Demo Header -->
+    <section class="demo-header">
+        <div class="container">
+            <h1>Real-time Handwriting Analysis</h1>
+            <p>Use your webcam to analyze handwriting instantly</p>
+        </div>
+    </section>
+
+    <!-- Webcam Demo -->
+    <section class="webcam-demo">
+        <div class="container">
+            <div class="demo-container">
+                <div class="webcam-section">
+                    <h2>Capture Handwriting</h2>
+                    <div class="webcam-preview">
+                        <video id="webcam" autoplay playsinline></video>
+                        <canvas id="canvas" style="display:none;"></canvas>
+                    </div>
+                    <div class="webcam-controls">
+                        <button id="captureBtn" class="btn btn-primary">
+                            <i class="fas fa-camera"></i>
+                            Capture
+                        </button>
+                        <button id="retakeBtn" class="btn btn-secondary" style="display:none;">
+                            <i class="fas fa-redo"></i>
+                            Retake
+                        </button>
+                    </div>
+                    <div class="instructions">
+                        <h3>Tips for Best Results:</h3>
+                        <ul>
+                            <li>Use clear, legible handwriting</li>
+                            <li>Ensure good lighting conditions</li>
+                            <li>Position paper flat in frame</li>
+                            <li>Write on plain white paper</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="results-section">
+                    <h2>Analysis Results</h2>
+                    <div id="loading" class="loading" style="display:none;">
+                        <div class="spinner"></div>
+                        <p>Analyzing handwriting...</p>
+                    </div>
+                    <div id="results" class="results-card">
+                        <div class="result-item">
+                            <h3>Gender</h3>
+                            <p id="genderResult">-</p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Handedness</h3>
+                            <p id="handednessResult">-</p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Age Group</h3>
+                            <p id="ageGroupResult">-</p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Writing Style</h3>
+                            <p id="styleTraits">-</p>
+                        </div>
+                    </div>
+                    <div class="captured-image">
+                        <img id="capturedImage" src="" alt="Captured Handwriting">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>HandwriteAI</span>
+                    </div>
+                    <p>Advanced handwriting analysis using cutting-edge AI</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="/webcam">Webcam Demo</a></li>
+                        <li><a href="/upload">Upload Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@handwriteai.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HandwriteAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        // Webcam functionality
+        const video = document.getElementById('webcam');
+        const canvas = document.getElementById('canvas');
+        const captureBtn = document.getElementById('captureBtn');
+        const retakeBtn = document.getElementById('retakeBtn');
+        const capturedImage = document.getElementById('capturedImage');
+        const loading = document.getElementById('loading');
+        const results = document.getElementById('results');
+        const ctx = canvas.getContext('2d');
+        
+        // Access webcam
+        async function initWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Error accessing webcam:", err);
+                alert("Could not access webcam. Please check permissions.");
+            }
+        }
+        
+        // Capture image from webcam
+        captureBtn.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            // Display captured image
+            const imageDataURL = canvas.toDataURL('image/jpeg');
+            capturedImage.src = imageDataURL;
+            
+            // Show retake button
+            captureBtn.style.display = 'none';
+            retakeBtn.style.display = 'inline-block';
+            
+            // Analyze handwriting
+            analyzeHandwriting(imageDataURL);
+        });
+        
+        // Retake image
+        retakeBtn.addEventListener('click', () => {
+            captureBtn.style.display = 'inline-block';
+            retakeBtn.style.display = 'none';
+            capturedImage.src = '';
+            document.getElementById('genderResult').textContent = '-';
+            document.getElementById('handednessResult').textContent = '-';
+            document.getElementById('ageGroupResult').textContent = '-';
+            document.getElementById('styleTraits').textContent = '-';
+        });
+        
+        // Analyze handwriting
+        async function analyzeHandwriting(imageData) {
+            loading.style.display = 'block';
+            results.style.display = 'none';
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `webcam_image=${encodeURIComponent(imageData)}`
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Display results
+                    document.getElementById('genderResult').textContent = data.gender || "Unknown";
+                    document.getElementById('handednessResult').textContent = data.handedness || "Unknown";
+                    document.getElementById('ageGroupResult').textContent = data.age_group || "Unknown";
+
+                    // Display formatted style traits
+                    document.getElementById('styleTraits').textContent = data.style_traits || "Unknown";
+                } else {
+                    alert('Error: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to analyze handwriting. Please try again.');
+            } finally {
+                loading.style.display = 'none';
+                results.style.display = 'block';
+            }
+        }
+        
+        // Initialize webcam on load
+        window.addEventListener('load', initWebcam);
+    </script>
+</body>
+</html>

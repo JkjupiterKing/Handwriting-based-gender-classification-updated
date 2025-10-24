@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - HandwriteAI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .features-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), url('/static/images/bg1.jpg') no-repeat center center/cover);
+            color: white;
+        }
+
+        .core-features {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg2.jpg') no-repeat center center/cover);
+        }
+
+        .technology {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg3.jpg') no-repeat center center/cover);
+        }
+
+        .use-cases {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), url('/static/images/bg4.jpg') no-repeat center center/cover);
+        }
+
+        .cta-section {
+            background: linear-gradient(rgba(79, 70, 229, 0.85), url('/static/images/bg1.jpg') no-repeat center center/cover);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-pen-fancy"></i>
+                <span>HandwriteAI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/features" class="nav-link active">Features</a>
+                <a href="/webcam" class="nav-link">Webcam Demo</a>
+                <a href="/upload" class="nav-link">Upload Demo</a>
+                <a href="/cnn-demo" class="nav-link active">CNN Demo</a> <!-- Add this line -->
+                <a href="/contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Features Header -->
+    <section class="features-header">
+        <div class="container">
+            <h1>Powerful Handwriting Analysis Features</h1>
+            <p>Discover how our AI technology reveals insights from handwriting</p>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="core-features">
+        <div class="container">
+            <!-- Gender Detection -->
+            <div class="feature-detail">
+                <div class="feature-info">
+                    <h2><i class="fas fa-venus-mars"></i> Gender Detection</h2>
+                    <p>Our advanced AI analyzes handwriting patterns to determine the writer's gender with remarkable
+                        accuracy.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 94.6% accuracy in gender prediction</li>
+                        <li><i class="fas fa-check-circle"></i> Based on stroke patterns and letter formations</li>
+                        <li><i class="fas fa-check-circle"></i> Trained on thousands of handwriting samples</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <img src="/static/images/a1.webp" alt="Gender Detection AI">
+                </div>
+            </div>
+
+            <!-- Handedness Analysis -->
+            <div class="feature-detail reverse">
+                <div class="feature-image">
+                    <img src="/static/images/a2.avif" alt="Handedness Analysis AI">
+                </div>
+                <div class="feature-info">
+                    <h2><i class="fas fa-hand-paper"></i> Handedness Analysis</h2>
+                    <p>Identify whether the writer is left or right-handed through subtle differences in writing style.
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Detects slant direction and pressure patterns</li>
+                        <li><i class="fas fa-check-circle"></i> Identifies smudging patterns unique to left-handed
+                            writers</li>
+                        <li><i class="fas fa-check-circle"></i> 92% accuracy in handedness detection</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Age Estimation -->
+            <div class="feature-detail">
+                <div class="feature-info">
+                    <h2><i class="fas fa-user-clock"></i> Age Estimation</h2>
+                    <p>Predict the approximate age group of the writer based on handwriting characteristics.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Classifies into child, teenager, adult, or senior</li>
+                        <li><i class="fas fa-check-circle"></i> Analyzes handwriting maturity and consistency</li>
+                        <li><i class="fas fa-check-circle"></i> Detects age-related tremors and pressure variations</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <img src="/static/images/a3.jpg" alt="Age Estimation AI">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology -->
+    <section class="technology">
+        <div class="container">
+            <h2>Advanced Technology</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Deep Learning</h3>
+                    <p>Neural networks trained on thousands of handwriting samples</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Gemini AI</h3>
+                    <p>Google's cutting-edge AI technology for handwriting analysis</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Pattern Recognition</h3>
+                    <p>Advanced algorithms to detect subtle handwriting patterns</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Real-time Processing</h3>
+                    <p>Instant analysis with results in seconds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases">
+        <div class="container">
+            <h2>Practical Applications</h2>
+            <div class="cases-grid">
+                <div class="case-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Forensic Analysis</h3>
+                    <p>Identify characteristics of anonymous writers in investigations</p>
+                </div>
+                <div class="case-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Educational Assessment</h3>
+                    <p>Understand student development through handwriting patterns</p>
+                </div>
+                <div class="case-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health Monitoring</h3>
+                    <p>Detect early signs of neurological conditions through writing</p>
+                </div>
+                <div class="case-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Personnel Screening</h3>
+                    <p>Gain insights during recruitment and personality assessment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="callout-content">
+                <h2>Ready to Experience Handwriting Analysis?</h2>
+                <p>Try our demo to see how it works</p>
+                <a href="/webcam" class="btn btn-large">
+                    <i class="fas fa-camera"></i>
+                    Start Webcam Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>HandwriteAI</span>
+                    </div>
+                    <p>Advanced handwriting analysis using cutting-edge AI</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/features">Features</a></li>
+                        <li><a href="/webcam">Webcam Demo</a></li>
+                        <li><a href="/upload">Upload Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/afnan-khan22"
+                                target="_blank">https://www.linkedin.com/in/afnan-khan22</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/Afnankhan8/"
+                                target="_blank">https://github.com/Afnankhan8/</a></li>
+                        <li><strong>Email:</strong> <a href="mailto:afnankhan1663@gmail.com">afnankhan1663@gmail.com</a>
+                        </li>
+                        <li><strong>Phone:</strong> <a href="tel:+919148168146">+91 9148168146</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HandwriteAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>
