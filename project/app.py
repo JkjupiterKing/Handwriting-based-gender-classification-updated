@@ -155,6 +155,16 @@ def save_contact_message(name, email, subject, message):
 
 
 # Gemini Predictor Functions
+def get_age_range(age_group):
+    """Map age group to a numerical range."""
+    age_map = {
+        "child": "0-12",
+        "teenager": "13-19",
+        "adult": "20-59",
+        "senior": "60+"
+    }
+    return age_map.get(age_group.lower(), "Unknown")
+
 def clean_json_response(text):
     """Remove markdown code fences and extra formatting."""
     text = text.strip()
@@ -391,6 +401,10 @@ def predict_route():
         
         prediction["style_traits"] = formatted_traits.capitalize() + "."
 
+        # Convert age group to age range
+        if 'age_group' in prediction:
+            prediction['age_group'] = get_age_range(prediction['age_group'])
+
         # Save to database
         save_to_database(prediction)
             
@@ -434,7 +448,8 @@ def predict_cnn():
         if gemini_result.get('handedness'):
             insights.append(f"Handedness: {gemini_result['handedness']}")
         if gemini_result.get('age_group'):
-            insights.append(f"Age Group: {gemini_result['age_group']}")
+            age_range = get_age_range(gemini_result['age_group'])
+            insights.append(f"Age Range: {age_range}")
         if gemini_result.get('style_traits'):
             insights.append(f"Traits: {gemini_result['style_traits']}")
         
